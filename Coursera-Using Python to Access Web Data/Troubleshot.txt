@@ -1,0 +1,9 @@
+Problem:
+I was having problem opening a website, because of mod_security or some similar server security feature which blocks known spider/bot user agents (urllib uses something like python urllib/3.3.0, it's easily detected)
+Solution:
+We need to set a known browser user agent like Mozilla.
+I added a parameter in Request finction.
+
+from urllib.request import Request, urlopen
+req = Request('url', headers={'User-Agent': 'Mozilla/5.0'})
+webpage = urlopen(req).read()
